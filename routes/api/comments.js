@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router;
+const router = express.Router();
 // Import the commentsController here
 const commentsController = require("../../controllers/comments");
 
