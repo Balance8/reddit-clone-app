@@ -18,7 +18,7 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  Post.findById(req.params.id, function(err) {
+  Post.findById(req.params.post_id, function(err) {
     if (err) return next(err);
     //redirect is wrong
 
@@ -31,7 +31,7 @@ function show(req, res) {
 function update(req, res) {}
 
 function destroy(req, res) {
-  Post.findByIdAndRemove(req.params.id, function(err) {
+  Post.findByIdAndRemove(req.params.post_id, function(err) {
     //redirect is wrong
 
     res.redirect("/posts");

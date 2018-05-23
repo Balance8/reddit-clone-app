@@ -5,10 +5,7 @@ var commentSchema = new Schema(
   {
     content: String,
     votes: Number
-  },
-  {
-    timestamps: true
   }
 );
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = commentSchema

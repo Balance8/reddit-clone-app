@@ -1,45 +1,44 @@
-// First we must require our database
 require("./config");
 
-// Import our Mongoose models
-const Post = require("./../models/Post");
-const Comment = require("./../models/Comment");
+const Post = require("../models/Post");
+const Comment = require("../models/Comment");
 
-// Destroy all data in database
-const seed = Promise.all([Post.remove({}), Comment.remove({})]);
+const seed = Promise.all([Post.remove({}), Comment.remove({})])
 
-// Let's create 4 Posts
-seed
   .then(() => {
-      return Comment.create([
-        {
-          content: "First",
-          votes: 34
-        },
-        {
-          content: "First-lmao",
-          votes: 20
-        }
-      ]);
+    return Post.create([
+      {
+        title: "Cats",
+        content: "they are awesome",
+        thumbnail_image_url: "https://imgur.com/bgnIKWK.png",
+        votes: 132,
+        comments: []
+      },
+      {
+        title: "Send Girl to Moon",
+        content: "we're sending a girl to the moon",
+        thumbnail_image_url: "https://i.imgur.com/nrkY6fb.jpg",
+        votes: 99,
+        comments: []
+      },
+      {
+        title: "BattleFront 2",
+        content: "This Game sux",
+        thumbnail_image_url: "https://i.imgur.com/TF9hlJs.jpg",
+        votes: 57,
+        comments: []
+      }
+    ]);
   })
-
-  // Let's log out all comments and add add 2 posts
-  .then(comment => {
-    console.log(comment);
-      return Post.create([
-        {
-          title: "Ass",
-          content: "Hello world",
-          thumbnail_image_url: "https://i.imgur.com/r3Gb444.png",
-          votes: 35,
-          comments: [Comments[0]._id, Comments[1]._id]
-        }
-      ]);
-  })
-
-  // Let's log out teachers and close the connection to our Mongoose database
   .then(posts => {
-    console.log(posts);
-    require("mongoose").connection.close();
-    process.exit();
-  });
+    posts[0].comments.push({ content: "They are adorable", votes: 99 });
+    posts[1].comments.push({ content: "We did it Reddit", votes: 72 });
+    posts[2].comments.push({ content: "I hate this game", votes: 69 });
+    Promise.all([posts[0].save(), posts[1].save(), posts[2].save()]).then(
+      function() {
+        require("mongoose").connection.close();
+        process.exit();
+      }
+    );
+  })
+  .catch(err => console.log(err));

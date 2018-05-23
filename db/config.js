@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.DATABASE_URL, {useMongoClient: true});
+mongoose.connect("mongodb://localhost/reddit");
 
 var db = mongoose.connection;
 
