@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
+import Comment from "../components/Comment/Comment";
+import Post from "../components/Post/Post";
 class SinglePostPage extends Component {
   render() {
     return (
-      <p className="SinglePostPage">
-	      Single Post Page
-      </p>
+      <div>
+        <p className="SinglePostPage">Single Post Page</p>
+        <Post />
+        
+      </div>
     );
   }
 }

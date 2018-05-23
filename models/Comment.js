@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var commentSchema = new Schema(
   {
-    content,
+    content: String,
     votes: Number
   },
   {

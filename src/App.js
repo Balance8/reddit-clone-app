@@ -13,12 +13,15 @@ class App extends Component {
           <h2 className="App-blurb">The front page of the web</h2>
         </header>
         <Router>
-        <Route
-          exact
-          path="/"
-          render={() => <HomePage/>}
-          />
-        </Router>  
+          <Switch>
+            <Route exact path="/" render={() => <HomePage />} />
+            <Route
+              exact
+              path="/posts/:post_id"
+              render={() => <SinglePostPage />}
+            />
+          </Switch>
+        </Router>
       </div>
     );
   }

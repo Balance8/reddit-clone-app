@@ -4,9 +4,9 @@ var commentSchema = require('./Comment')
 
 var postSchema = new Schema(
   {
-    title,
-    content,
-    thumbnail_image_url,
+    title:String,
+    content:String,
+    thumbnail_image_url:String,
     votes: Number,
     comments: [commentSchema]
   },
