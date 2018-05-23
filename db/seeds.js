@@ -27,16 +27,14 @@ seed
   .then(comment => {
     console.log(comment);
       return Post.create([
-    {
-        title: "Ass",
-        content: "Hello world",
-        thumbnail_image_url:
-          "https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg",
-        votes: 35,
-        comments: [Comments[0]._id, Comments[1]._id]
-      }
-      
-    ]);
+        {
+          title: "Ass",
+          content: "Hello world",
+          thumbnail_image_url: "https://i.imgur.com/r3Gb444.png",
+          votes: 35,
+          comments: [Comments[0]._id, Comments[1]._id]
+        }
+      ]);
   })
 
   // Let's log out teachers and close the connection to our Mongoose database
