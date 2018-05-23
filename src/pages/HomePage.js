@@ -26,7 +26,17 @@ class HomePage extends Component {
                 <td>
                   <img src={this.props.posts.thumbnail_image_url} />
                 </td>
-                <td />
+                <td>
+                  <div>
+                    <Link
+                      className="HighScores-cancel btn btn-default btn-sm"
+                      to="/posts/0"
+                      style={{ marginTop: 40 }}
+                    >
+                      See This Post
+                    </Link>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
