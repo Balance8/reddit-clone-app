@@ -38,7 +38,12 @@ class App extends Component {
               exact
               path="/posts/:post_id"
               render={props => (
-                <SinglePostPage match={props.match} post={this.state.posts.find(post=>post._id===props.match.params.post_id)} />
+                <SinglePostPage
+                  match={props.match}
+                  post={this.state.posts.find(
+                    post => post._id === props.match.params.post_id
+                  )}
+                />
               )}
             />
           </Switch>

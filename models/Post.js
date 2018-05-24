@@ -10,7 +10,7 @@ var postSchema = new Schema(
     votes: Number,
     comments: [commentSchema]
   },
-  {
+  { 
     timestamps: true
   }
 );

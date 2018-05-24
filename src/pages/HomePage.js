@@ -4,7 +4,8 @@ import "./HomePage.css";
 
 class HomePage extends Component {
   render() {
-    const postRows = this.props.posts.map((post, idx) => <tr key={idx}>
+    const postRows = this.props.posts.map((post, idx) => (
+      <tr key={idx}>
         <td>
           <span className="badge">{idx + 1}</span>
         </td>
@@ -13,10 +14,15 @@ class HomePage extends Component {
         <td>
           <img src={post.thumbnail_image_url} />
         </td>
-      <Link className="HighScores-cancel btn btn-default btn-sm" to={`/posts/${post._id}`} style={{ marginTop: 40 }}>
+        <Link
+          className="HighScores-cancel btn btn-default btn-sm"
+          to={`/posts/${post._id}`}
+          style={{ marginTop: 40 }}
+        >
           See This Post
         </Link>
-      </tr>);
+      </tr>
+    ));
 
     return (
       <div className="HighScores">
@@ -37,9 +43,7 @@ class HomePage extends Component {
         ) : (
           <h4 className="text-info">No Posts Yet</h4>
         )}
-        <div>
-          
-        </div>
+        <div />
       </div>
     );
   }

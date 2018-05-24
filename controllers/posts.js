@@ -8,33 +8,38 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  Post.create(req.body)
-    .then(post => {
-      res.json(post);
-    })
-    .catch(err => {
-      res.json({ error: err });
-    });
-}
-
-function show(req, res) {
-  Post.findById(req.params.post_id, function(err) {
-    if (err) return next(err);
-    //redirect is wrong
-
-    res.render("posts/:post_id", {
-      post
-    });
+  let post = new Post(req.body);
+  post.save(err => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json(post);
   });
 }
 
-function update(req, res) {}
+function show(req, res) {
+  Post.findById(req.params.id)
+    .populate("comments")
+    .exec(function(err, post) {
+      if (err) return res.status(500).json(err);
+      return res.status(200).json(post);
+    });
+}
+
+function update(req, res) {
+  Post.findByIdAndUpdate(
+    req.params.post_id,
+    req.body,
+    { new: true },
+    (err, post) => {
+      if (err) return res.status(500).json(err);
+      return res.json(post);
+    }
+  );
+}
 
 function destroy(req, res) {
-  Post.findByIdAndRemove(req.params.post_id, function(err) {
-    //redirect is wrong
-
-    res.redirect("/posts");
+  Post.findByIdAndRemove(req.params.post_id, (err, post) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json({ post: post });
   });
 }
 

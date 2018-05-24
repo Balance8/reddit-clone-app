@@ -6,8 +6,8 @@ class TextPost extends Component {
   render() {
     return (
       <div className="TextPost">
-        <p className="TextPost-content">TextPost content</p>
-        <Comment />
+        <p className="TextPost-content">{this.props.post.content}</p>
+        <Comment post={this.props.post} />
       </div>
     );
   }
