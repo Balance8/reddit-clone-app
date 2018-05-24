@@ -13,7 +13,7 @@ class HomePage extends Component {
         <td>
           <img src={post.thumbnail_image_url} />
         </td>
-      <Link className="HighScores-cancel btn btn-default btn-sm" to={`/posts/${idx}`} style={{ marginTop: 40 }}>
+      <Link className="HighScores-cancel btn btn-default btn-sm" to={`/posts/${post._id}`} style={{ marginTop: 40 }}>
           See This Post
         </Link>
       </tr>);
